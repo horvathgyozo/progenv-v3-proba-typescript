@@ -8,4 +8,7 @@ storiesOf('Header', module)
   .addDecorator(wrapWithStore({authStore}))
   .add('default', () => (
     <Header title="Győző" />
-  ));
+  ))
+  .add('Marci', () => (
+    <Header title="Marci" />
+  ))

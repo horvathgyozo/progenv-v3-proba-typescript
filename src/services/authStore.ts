@@ -1,12 +1,6 @@
 import { action, computed, observable } from "mobx";
 
-export interface IAuthStore {
-  readonly isAuthenticated: boolean;
-  authenticate(): void;
-  signout(): void;
-};
-
-export default class AuthStore implements IAuthStore {
+export class AuthStore {
   @observable private authenticated: boolean = false;
 
   @computed get isAuthenticated(): boolean {
@@ -15,7 +9,7 @@ export default class AuthStore implements IAuthStore {
 
   @action.bound
   public authenticate() {
-    setTimeout(() => this.authenticated = !this.authenticated, 100) // fake async
+    setTimeout(action(() => this.authenticated = !this.authenticated), 100) // fake async
   }
   @action.bound
   public signout() {
