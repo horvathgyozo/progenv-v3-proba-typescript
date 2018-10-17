@@ -1,4 +1,4 @@
-import { action, computed, observable } from "mobx";
+import { action, computed, observable } from 'mobx';
 
 export class AuthStore {
   @observable private authenticated: boolean = false;

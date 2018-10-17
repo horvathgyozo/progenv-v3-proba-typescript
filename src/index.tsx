@@ -1,13 +1,19 @@
 // import registerServiceWorker from './registerServiceWorker';
-import { Provider } from "mobx-react";
+import { configure } from 'mobx';
+import { Provider } from 'mobx-react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import { authStore } from "./services/stores";
+import { authStore, exampleStore } from './services/stores';
+
+configure({
+  enforceActions: 'observed'
+});
 
 const stores = {
-  authStore
+  authStore,
+  exampleStore
 };
 
 ReactDOM.render(

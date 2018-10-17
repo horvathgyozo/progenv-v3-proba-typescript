@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
-import Header from './components/Header';
+import { ExamplePanel } from './components/ExamplePanel';
+import { Header } from './components/Header';
 
 class App extends React.Component {
   public render() {
@@ -10,6 +11,7 @@ class App extends React.Component {
         <p>
           Some more text
         </p>
+        <ExamplePanel title="Próba" />
       </div>
     );
   }

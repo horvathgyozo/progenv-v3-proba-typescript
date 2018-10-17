@@ -1,27 +1,20 @@
-import { inject, observer } from "mobx-react";
+import { observer } from 'mobx-react';
 import * as React from 'react';
-import { AuthStore } from "../services/authStore";
+import { myInject } from 'src/utils/inject';
+import { AuthStore } from '../services/authStore';
 
-interface IHeaderProps { 
+interface IProps { 
   title: string; 
 }
 
-// https://medium.com/@prashaantt/strongly-typing-injected-react-props-635a6828acaf
-interface IAllStores {
-  authStore: AuthStore;
-}
-
-const myInject = (storeName: keyof IAllStores) => {
-  return inject((allStores: IAllStores) => {
-    return ({ [storeName]: allStores[storeName] })
-  })
-};
-// @inject((allStores: IAllStores) => ({
-//   authStore: allStores.authStore as IAuthStore
-// }))
 @myInject('authStore')
 @observer
-class Header extends React.Component<{authStore?: AuthStore} & IHeaderProps> {
+export class Header extends React.Component<{authStore?: AuthStore} & IProps> {
+
+  public static defaultProps = { 
+    title: 'Próba' 
+  };
+
   public render() {
     return (
       <header>
@@ -32,5 +25,3 @@ class Header extends React.Component<{authStore?: AuthStore} & IHeaderProps> {
     );
   }
 }
-
-export default Header;
