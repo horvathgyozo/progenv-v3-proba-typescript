@@ -5,16 +5,14 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import { authStore, exampleStore } from './services/stores';
+import { stores } from './services/stores';
 
 configure({
   enforceActions: 'observed'
 });
 
-const stores = {
-  authStore,
-  exampleStore
-};
+// tslint:disable-next-line:no-console
+console.log(process.env.REACT_APP_MOCK);
 
 ReactDOM.render(
   <Provider {...stores}>

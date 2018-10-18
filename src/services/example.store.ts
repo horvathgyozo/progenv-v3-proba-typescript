@@ -1,4 +1,5 @@
 import { computed, observable } from 'mobx';
+import { exampleApi } from 'src/apis/example.api';
 
 export class ExampleStore {
 
@@ -25,4 +26,12 @@ export class ExampleStore {
     this._output = value;
   }
   
+  public evaluate() {
+    // tslint:disable-next-line:no-console
+    console.log(this);
+    exampleApi.evaluate(this.input)
+      .then(response => response.output)
+      .then(output => this.output = output)
+  }
+
 }

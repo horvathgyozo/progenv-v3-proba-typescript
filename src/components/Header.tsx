@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import { myInject } from 'src/utils/inject';
 import { AuthStore } from '../services/authStore';
+import { myInject } from '../utils/inject';
 
 interface IProps { 
   title: string; 
