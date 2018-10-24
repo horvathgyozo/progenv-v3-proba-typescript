@@ -1,10 +1,15 @@
 import { computed, observable } from 'mobx';
-import { exampleApi } from 'src/apis/example.api';
+import { IExampleApi } from 'src/apis/example-api.interfaces';
 
 export class ExampleStore {
 
-  @observable private _input: string = '';
+  @observable private _input: string = 'something';
   @observable private _output: string = '';
+  private exampleApi: IExampleApi;
+
+  constructor(exampleApi: IExampleApi) {
+    this.exampleApi = exampleApi;
+  }
 
   @computed get fakeOutput(): string {
     return `fake output is a simply the input: ${this._input}`;
@@ -29,7 +34,7 @@ export class ExampleStore {
   public evaluate() {
     // tslint:disable-next-line:no-console
     console.log(this);
-    exampleApi.evaluate(this.input)
+    this.exampleApi.evaluate(this.input)
       .then(response => response.output)
       .then(output => this.output = output)
   }
