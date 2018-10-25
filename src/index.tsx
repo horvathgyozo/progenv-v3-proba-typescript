@@ -12,7 +12,7 @@ configure({
   enforceActions: 'observed'
 });
 
-router.start('/home');
+router.start();
 
 // tslint:disable-next-line:no-console
 console.log(process.env.REACT_APP_MOCK);
