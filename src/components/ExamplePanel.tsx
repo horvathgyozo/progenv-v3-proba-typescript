@@ -10,7 +10,12 @@ interface IProps {
 
 @myInject('exampleStore')
 @observer
-export class ExamplePanel extends React.Component<IProps & {exampleStore?: ExampleStore}> {
+export class ExamplePanel extends React.Component<IProps & {exampleStore: ExampleStore}> {
+
+  public static defaultProps = {
+    exampleStore: null,
+    title: 'alma'
+  }
 
   @observable private showInput: boolean = true;
 
@@ -22,17 +27,17 @@ export class ExamplePanel extends React.Component<IProps & {exampleStore?: Examp
       <div>
         <h1>Example panel ({title})</h1>
         <p>
-          <input type="text" onChange={this.handleInput} value={exampleStore!.input} />
+          <input type="text" onChange={this.handleInput} value={exampleStore.input} />
           <button onClick={this.handleEvaluateClick}>Evaluate</button>
         </p>
         <p>
           <input type="checkbox" onChange={this.handleInputClick} checked={showInput} />
           Show input (state variable)
           <br/>
-          <span hidden={!this.showInput}>Input (store variable): {exampleStore!.input}</span>
+          <span hidden={!this.showInput}>Input (store variable): {exampleStore.input}</span>
         </p>
-        <p>FakeOutput (store computed): {exampleStore!.fakeOutput}</p>
-        <p>Output (store variable): {exampleStore!.output}</p>
+        <p>FakeOutput (store computed): {exampleStore.fakeOutput}</p>
+        <p>Output (store variable): {exampleStore.output}</p>
       </div>
     );
   }

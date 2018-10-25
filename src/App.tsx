@@ -11,7 +11,7 @@ class App extends React.Component {
         <p>
           Some more text
         </p>
-        <ExamplePanel title="Próba" />
+        <ExamplePanel  />
       </div>
     );
   }
