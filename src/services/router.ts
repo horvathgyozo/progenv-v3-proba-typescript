@@ -1,15 +1,13 @@
 // tslint:disable:no-debugger no-console
 
 import { autorun } from 'mobx';
-import { mobxPlugin, RouterStore } from 'mobx-router5';
+import { mobxPlugin } from 'mobx-router5';
 import createRouter from 'router5';
 import browserPlugin from 'router5/plugins/browser';
 import loggerPlugin from 'router5/plugins/logger'; 
 import { AuthStore } from './authStore';
 import { ExampleStore } from './example.store';
 import { stores } from './stores';
-
-const routerStore = new RouterStore();
 
 function myPlugin(_router: any, _dependencies: any) {
   return {
@@ -46,7 +44,8 @@ myPlugin.pluginName = 'MY_PLUGIN';
 
 const routes = [
   { name: 'home',       path: '/home'},
-  { name: 'login',       path: '/login'},
+  { name: 'login',      path: '/login'},
+  { name: 'help',       path: '/help/:command'},
   { name: 'about',      path: '/about', canActivate: (_router: any, { authStore }: {authStore: AuthStore}) => (_toState: any, _fromState: any, done: any) => {
     // return Promise.reject({ redirect: { name: 'login' } });
     if (authStore.isAuthenticated) {
@@ -66,6 +65,8 @@ const routes = [
   }}
 ];
 
+const routerStore = stores.routerStore;
+
 export const router = createRouter(routes, { defaultRoute: 'home' }, { ...stores })
   .usePlugin(mobxPlugin(routerStore))
   .usePlugin(browserPlugin({ useHash: true }))
@@ -73,7 +74,8 @@ export const router = createRouter(routes, { defaultRoute: 'home' }, { ...stores
   .usePlugin(myPlugin)
   .useMiddleware(mware1, mware2);
 
-setTimeout(() => router.navigate('about', {}, {}), 4000);
+// setTimeout(() => router.navigate('about', {}, {}), 4000);
+setTimeout(() => router.navigate('help', {command: 'alma'}, {}), 4000);
 setTimeout(() => router.navigate('users.list', {}, { replace: true, skipMiddleware: true }), 8000);
 
 router.subscribe(({route, previousRoute }) => {
