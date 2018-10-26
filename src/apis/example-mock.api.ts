@@ -1,4 +1,4 @@
-import { createResponse } from 'src/utils/create-response';
+import { createResponse } from '../utils/create-response';
 import { IEvaluateResponse, IExampleApi } from './example-api.interfaces';
 
 export class ExampleMockApi implements IExampleApi {

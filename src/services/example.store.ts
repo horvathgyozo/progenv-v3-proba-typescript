@@ -1,5 +1,5 @@
 import { computed, observable } from 'mobx';
-import { IExampleApi } from 'src/apis/example-api.interfaces';
+import { IExampleApi } from '../apis/example-api.interfaces';
 
 export class ExampleStore {
 

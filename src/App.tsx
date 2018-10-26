@@ -2,18 +2,20 @@ import * as React from 'react';
 import './App.css';
 import { ExamplePanel } from './components/ExamplePanel';
 import { Header } from './components/Header';
-import { RouterOutlet } from './components/RouterOutlet';
+import { Route } from './routing/route.component';
+import { Switch } from './routing/switch.component';
 
 class App extends React.Component {
   public render() {
     return (
       <div>
-        <RouterOutlet />
-        <Header title="Győző" />
-        <p>
-          Some more text
-        </p>
-        <ExamplePanel  />
+        <Switch>
+          <Route routeName="home" component={Header} />
+          <Route routeName="repls" component={ExamplePanel} />
+          <p>
+            Public
+          </p>
+        </Switch>
       </div>
     );
   }

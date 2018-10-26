@@ -1,5 +1,5 @@
 import { RouterStore } from 'mobx-router5';
-import { ExampleMockApi } from 'src/apis/example-mock.api';
+import { ExampleMockApi } from '../apis/example-mock.api';
 import { AuthStore } from './authStore';
 import { ExampleStore } from './example.store';
 

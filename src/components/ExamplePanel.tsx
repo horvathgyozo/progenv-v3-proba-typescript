@@ -1,8 +1,8 @@
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import { ExampleStore } from 'src/services/example.store';
-import { myInject } from 'src/utils/inject';
+import { ExampleStore } from '../services/example.store';
+import { myInject } from '../utils/inject';
 
 interface IProps {
   title: string;
