@@ -10,6 +10,10 @@ export class BaseLink {
     forceUpdate(callback: any): void;
     render(): any;
     setState(partialState: any, callback: any): void;
+    props: any;
+    state: any;
+    context: any;
+    refs: any;
 }
 export namespace BaseLink {
     namespace propTypes {
