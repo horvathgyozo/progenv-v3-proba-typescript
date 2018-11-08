@@ -8,19 +8,23 @@ interface IProps {
   title: string;
 }
 
+interface IStore {
+  exampleStore: ExampleStore;
+}
+
+
 @myInject('exampleStore')
 @observer
-export class ExamplePanel extends React.Component<IProps & {exampleStore: ExampleStore}> {
+export class ExamplePanel extends React.Component<IProps & Partial<IStore>> {
 
   public static defaultProps = {
-    exampleStore: null,
     title: 'alma'
   }
 
   @observable private showInput: boolean = true;
 
   public render() {
-    const {title, exampleStore} = this.props;
+    const {title, exampleStore} = this.props as IProps & IStore;
     const {showInput} = this;
 
     return (
