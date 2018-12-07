@@ -2,10 +2,18 @@
 
 import { mobxPlugin } from 'mobx-router5';
 import createRouter from 'router5';
+import { Router } from 'router5/create-router';
 import browserPlugin from 'router5/plugins/browser';
 import loggerPlugin from 'router5/plugins/logger'; 
 import { stores } from '../services/stores';
 import { routes } from './routes';
+
+declare module 'router5/create-router' {
+  // tslint:disable-next-line:interface-name
+  interface Router {
+    replaceHistoryState(route: string, params: Params): void
+  }
+}
 
 /*
 const mware1 = (_router: any) => (toState: any, _fromState: any, _done: any) => {
@@ -63,3 +71,4 @@ export const router = createRouter(routes, { defaultRoute: 'home' }, { ...stores
 // setTimeout(() => router.navigate('about', {}, {}), 4000);
 // setTimeout(() => router.navigate('help', {command: 'alma'}, {}), 4000);
 // setTimeout(() => router.navigate('users.list', {}, { replace: true, skipMiddleware: true }), 8000);
+// setTimeout(() => (router as Router).replaceHistoryState('repls', {}), 2000); // ez lesz a nyerő
